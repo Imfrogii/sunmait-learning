@@ -7,7 +7,6 @@ body{
   display: flex;
   border-top: 4px solid #6db33f;
   background-color: #34302d;
-  width: 100%;
   justify-content: center;
   align-items: center;
   padding: 0 2%;
@@ -16,16 +15,13 @@ body{
 header{
   display: flex;
   width: 1000px;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+
 }
 
 header img{
   width: 140px;
-}
-
-header a{
-  flex-basis: 300px;
 }
 
 header ul{
@@ -34,11 +30,12 @@ header ul{
   padding: 0;
   color: white;
   font-weight: 800;
+  margin-left: auto;
 }
 
 header ul li{
   font-size: 14px;
-  padding: 2vw;
+  padding: 20px 40px;;
 }
 
 header ul li:hover{
@@ -54,7 +51,7 @@ header ul li:hover{
 .body-container{
   display: flex;
   justify-content: center;
-  margin-top: 6vw;
+  /* margin-top: 6vw; */
   padding: 2%;
 }
 .main-body{
@@ -138,6 +135,7 @@ li{
   }
   header{
     margin-right: 4vw;
+    justify-content: center;
   }
   header a{
     flex-basis: 0;
@@ -148,8 +146,12 @@ li{
   header img{
     margin-top: 5px;
   }
+
+  .main-body{
+    width: 94vw;
+  }
   .section{
-    width: 41vw;
+    width: 40vw;
   }
 
   footer ul{
