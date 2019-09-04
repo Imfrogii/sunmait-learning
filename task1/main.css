@@ -1,0 +1,177 @@
+body{
+  background-color: rgba(237, 237, 237, 0.86);
+  margin: 0;
+}
+
+.header-container{
+  display: flex;
+  border-top: 4px solid #6db33f;
+  background-color: #34302d;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2%;
+}
+
+header{
+  display: flex;
+  width: 1000px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header img{
+  width: 140px;
+}
+
+header a{
+  flex-basis: 300px;
+}
+
+header ul{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-weight: 800;
+}
+
+header ul li{
+  font-size: 14px;
+  padding: 2vw;
+}
+
+header ul li:hover{
+  background-color: #6db33f;
+  transition-duration: 0.3s
+}
+
+.button-more{
+  color:white;
+  display: none;
+}
+
+.body-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 6vw;
+  padding: 2%;
+}
+.main-body{
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin-bottom: 0;
+  align-self: center;
+}
+
+.about{
+  font-size: 19px;
+}
+
+.sections{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 5vw;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  text-align: center;
+  border: 1px solid rgba(112, 112, 112, 0.2);
+  width: 250px;
+  margin-bottom: 1vw;
+  height: auto;
+  justify-content: space-around;
+}
+
+.section img{
+  width: 120px;
+  height: 140px;
+}
+
+.section span{
+  font-size: 16px;
+}
+
+.section:hover{
+  transition: 0.2s;
+  border-color: rgb(70, 70, 70);
+}
+
+footer{
+  display:flex;
+  flex-direction: column;
+  background-color: #34302d;
+  color: white;
+  padding-left: 10vw;
+  padding-bottom: 2vw;
+  margin-top: 5vw;
+}
+
+footer ul{
+  display: flex;
+  justify-content: space-between;
+  width: 30vw;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+li{
+  list-style-type: none;
+}
+
+@media screen and (max-width:1000px) {
+  .button-more{
+    margin-left: 2vw;
+    display: inline-block;
+    font-size: 25px;
+    /* margin-right: 10vw; */
+  }
+  header{
+    margin-right: 4vw;
+  }
+  header a{
+    flex-basis: 0;
+  }
+  header ul{
+    display: none;
+  }
+  header img{
+    margin-top: 5px;
+  }
+  .section{
+    width: 41vw;
+  }
+
+  footer ul{
+    width: 40vw;
+  }
+
+  footer li{
+    font-size: 13px;
+  }
+  span{
+    font-size: 17px;
+  }
+  h1{
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width:600px){
+  .section{
+    width: 90vw;
+  }
+  footer ul{
+    width: 70vw;
+  }
+}
