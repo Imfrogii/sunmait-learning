@@ -86,7 +86,7 @@ body{
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  /* padding-left: 2%; */
+  height: 62px;
 }
 
 header{
@@ -113,7 +113,7 @@ header ul{
 
 header ul li{
   font-size: 14px;
-  padding: 20px 20px;
+  padding: 22px 20px;
 }
 
 header ul li:hover{
