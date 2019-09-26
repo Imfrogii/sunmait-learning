@@ -5,9 +5,8 @@ import SmallMenu from "./SmallMenu"
 
 
 const Header = (props) => {
-  let [isMenuOpen, setMenuOpen] = useState(false);
-  let [isSearchOpen, setSearchOpen] = useState(false);
-  // let [searchValue, setSearchValue] = useState(undefined);
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
 
   useEffect(()=>{
     if(isSearchOpen)
@@ -54,30 +53,32 @@ const Header = (props) => {
   }
 
   const search = (e) => {
-   let str = e.target.value;
-   // setSearchValue(str);
-   let searchedBlocks = JSON.parse(JSON.stringify(props.blocks));
-   if(str.length>2){
-       props.blocks.forEach((block, index)=>{
-         let saveBlock = false;
-         for(let key of Object.keys(block)){
-            let pos = -1;
-            if( key!=="img" && (pos = block[key].toLowerCase().indexOf(str.toLowerCase()))!==-1 ){
-              saveBlock = true;
-              let strToChange = block[key].slice(pos, pos + str.length);
-              searchedBlocks[index][key] = block[key].split(strToChange).join("<em style=background-color:yellow>"+
-                    strToChange + "</em>");
-            }
-       }
-       if(!saveBlock)
-       searchedBlocks[index]=undefined;
-    });
-  console.log();
-  props.setStateBlocks(cleanMass(searchedBlocks));
-  }
-  else{
-    props.setStateBlocks(props.blocks);
-  }
+    let str = e.target.value;
+    let newArr = [];
+    if(str.length>2){
+      newArr = props.blocks.filter((item) => {
+        for(let key of Object.keys(item)){
+          if( key!=="img" && item[key].toLowerCase().includes(str.toLowerCase()) ){
+            return true;
+          }
+        }
+      });
+      newArr = JSON.parse(JSON.stringify(newArr));
+      newArr.forEach((item, index) => {
+        for(let key of Object.keys(item)){
+           let pos = -1;
+           if( key!=="img" && (pos = item[key].toLowerCase().indexOf(str.toLowerCase()))!==-1 ){
+             let strToChange = item[key].slice(pos, pos + str.length);
+             item[key] = item[key].split(strToChange).join("<em style=background-color:yellow>"+
+                   strToChange + "</em>");
+           }
+         }
+      });
+      props.setStateBlocks(newArr);
+    }
+    else{
+      props.setStateBlocks(props.blocks);
+    }
   }
 
   return (
