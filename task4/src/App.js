@@ -3,10 +3,14 @@ import './App.css';
 import Header from "./components/Header";
 import Sections from "./components/Sections";
 import Footer from "./components/Footer";
+import { Login } from "./components/Login";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+
 
 const App = () => {
   const [stateBlocks, setStateBlocks] = useState([]);
   const [blocks, setBlocks] = useState([]);
+  const [logined, setLogined] = useState(false);
 
   const Block = function(name, about, img){
     this.name = name;
@@ -39,25 +43,25 @@ const App = () => {
     addBlock("SPRING INTEGRATION",
      "Supports the well-known <em>Enterprise Integration Patterns</em> via lightweight messaging and declarative adapters.", "img/integration.png");
   },[]);
-  
+
   useEffect(()=>{
     setStateBlocks([...blocks]);
   },[blocks]);
 
   return (
-    <div>
+    <Router>
       <Header stateBlocks={stateBlocks} setStateBlocks={setStateBlocks} blocks={blocks} />
       <div className="body-container">
         <div className="main-body">
-          <h1>Main Projects</h1>
-          <span className="about">From configuration to security, web apps to big data – whatever the infrastructure needs of your application may be, there is a <strong>Spring Project</strong> to help you build it. Start small and use just what you need – <strong>Spring is modular by design</strong>.</span>
-          <Sections className="sections" blocks={stateBlocks}/>
+          <Route path="/login" component={() => <Login setLogined={setLogined} />} />
+          <Route path="/" exact component={() => <Sections className="sections" blocks={stateBlocks} />} />
+          {logined? null:<Redirect to="/login" />}
         </div>
       </div>
       <div className="footer-container">
         <Footer />
       </div>
-    </div>
+    </Router>
   );
 }
 

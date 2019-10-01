@@ -255,6 +255,30 @@ footer ul li:hover{
   color: #6db33f;
 }
 
+.login{
+  display: flex;
+  flex-direction: column;
+  /* width: 40%; */
+  height: 100px;
+  align-self: center;
+  align-items: center;
+  /* justify-content: space-evenly; */
+}
+
+.login input {
+  margin-bottom: 2px;
+  outline: none;
+  /* height: 25px; */
+}
+
+.login button{
+  width: 100%;
+}
+
+.error{
+  color: red;
+}
+
 a{
   text-decoration: none;
   color: black;

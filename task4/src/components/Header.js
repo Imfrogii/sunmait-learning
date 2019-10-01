@@ -42,16 +42,6 @@ const Header = (props) => {
     else window.onscroll = () => {};
   });
 
-  const cleanMass = (blocks) => {
-    for(let i = 0; i<blocks.length; i++){
-      if(blocks[i] === undefined){
-        blocks.splice(i, 1);
-        i--;
-      }
-    }
-    return blocks;
-  }
-
   const search = (e) => {
     let str = e.target.value;
     let newArr = [];
