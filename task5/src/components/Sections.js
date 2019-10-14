@@ -14,7 +14,7 @@ export const Sections = ({ blocks }) => (
     <div className="sections">
       {blocks.map(block => (
         <Section key={block.about} block={block} />
-      ))}
+        ))}
       {blocks.length === 0 ? <span>No results</span> : null}
     </div>
   </div>
