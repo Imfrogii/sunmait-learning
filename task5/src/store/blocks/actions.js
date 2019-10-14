@@ -1,22 +1,22 @@
 import { ACTION_CHANGE_STR_TO_FIND, ACTION_ADD_BLOCKS } from "../actionsTypes";
-import { getBlocks } from "../../store/server";
 
 export const actionAddBlocks = () => dispatch =>{
-    getBlocks()
+  fetch("http://localhost:3001/")
     .then(
-      result => {
-        dispatch({
+      result =>
+        result.json().then(data => {
+          dispatch({
             type: ACTION_ADD_BLOCKS,
-            payload: result,
-        });
-      },
+            payload: data
+          });
+        }),
       err => {
         throw new Error("There are no blocks");
       }
     )
-    .catch((error)=>{
+    .catch(error => {
       alert(error.message);
-    })
+    });
 }
 
 export const actionChangeStrToFind = (str) => {

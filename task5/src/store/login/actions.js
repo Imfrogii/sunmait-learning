@@ -1,20 +1,24 @@
 import { ACTION_CHANGE_USER, USER_HAS_ERRORED } from "../actionsTypes";
-import { doLogIn } from "../../store/server";
 
 export const actionChangeUser = ({login, password}) => dispatch =>{
-  doLogIn(login, password)
-    .then(
-      result => {
-        dispatch(userHasErrored(""));
-        localStorage.setItem("isLogged", true);
-        dispatch({
-          type: ACTION_CHANGE_USER,
-          payload: login
-        });
-      },
-      err => {
-        throw new Error("Wrong login or password");
-      }
+  fetch("http://localhost:3001/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8"
+    },
+    body: JSON.stringify({ login, password })
+  })
+    .then(result =>
+      result.json().then(data => {
+        if (data.message) {
+          dispatch(userHasErrored(""));
+          localStorage.setItem("isLogged", true);
+          dispatch({
+            type: ACTION_CHANGE_USER,
+            payload: login
+          });
+        } else throw new Error("Wrong login or password");
+      })
     )
     .catch(err => dispatch(userHasErrored(err)));
 };
