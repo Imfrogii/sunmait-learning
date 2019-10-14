@@ -32,17 +32,32 @@ addBlock("SPRING INTEGRATION",
  "Supports the well-known <em>Enterprise Integration Patterns</em> via lightweight messaging and declarative adapters.", "img/integration.png");
 
 let sections = document.getElementsByClassName("sections")[0];
-blocks.map((block) =>{
-  let a = document.createElement("a");
-  a.className = "section";
-  let img = document.createElement("img");
-  img.src = block.img;
-  let h4 = document.createElement("h4");
-  h4.innerHTML = block.name;
-  let span = document.createElement("span");
-  span.innerHTML = block.about;
-  a.append(img);
-  a.append(h4);
-  a.append(span);
-  sections.append(a);
-});
+
+show = (arrBlocks) =>{
+  while(sections.firstChild)
+    sections.firstChild.remove();
+  if(arrBlocks.length===0){
+    sections.innerHTML = "<big><big>No results</big></big>";
+    return;
+  }
+  arrBlocks.map((block) =>{
+    let a = document.createElement("a");
+    a.className = "section";
+    let img = document.createElement("img");
+    img.src = block.img;
+    let h4 = document.createElement("h4");
+    h4.innerHTML = block.name;
+    let span = document.createElement("span");
+    span.innerHTML = block.about;
+    a.append(img);
+    a.append(h4);
+    a.append(span);
+    sections.append(a);
+  });
+}
+
+getBlocks = () => {
+  return blocks;
+}
+
+show(blocks);

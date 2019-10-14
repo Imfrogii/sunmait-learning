@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { actionAddBlocks } from "./store/blocks/actions";
 import "./App.css";
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const addBlocks = () => dispatch(actionAddBlocks());
